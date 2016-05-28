@@ -1,5 +1,5 @@
 # Terminal Wiki Browser
-Turkey is a terminal application for browsing Mediawiki websites, such as `<wikipedia.org>`. See
+Turkey is a terminal application for browsing Mediawiki websites, such as wikipedia.org. See
 example_wikis.txt for some example wikis to browse.
 ## Installation
 ```
@@ -11,7 +11,7 @@ tky --version
 ```
 ## Usage Example
 ```
-tky -w en.wikipedia.org -p /w -a elephants
+tky -w en.wikipedia.org -p /w -a elephant
 ```
 ## Command Line
 command | description | example | required
@@ -35,11 +35,10 @@ s | highlight and scroll to next header (from current link)
 w | highlight and scroll to previous header (from current link)
 
 ## Tested OS
-
 * OSX
+* Ubuntu
 
 ## TODO
-
 * It's really raw right now and needs a lot of refactoring (don't judge, please!).
 * Needs some unit testing
 * Add wiki alias file
