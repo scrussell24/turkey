@@ -1,7 +1,7 @@
 { 
   "name": "turkey",
   "version": "0.0.3",
-  "description": "A terminal application for reading Mediawiki data",
+  "description": "A terminal application for reading Mediawiki websites",
   "author": "Scott Russell",
   "email": "scrussell24@gmail.com",
   "license": "MIT",
