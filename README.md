@@ -13,7 +13,7 @@ tky --version
 ```
 tky -w en.wikipedia.org -p /w -a elephant
 ```
-![screenshot](http://imgur.com/mBalZZp "elephant")
+![screenshot](http://i.imgur.com/mBalZZp.png "elephant")
 
 ## Command Line
 command | description | example | required
