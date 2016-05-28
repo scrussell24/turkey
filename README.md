@@ -13,10 +13,12 @@ tky --version
 ```
 tky -w en.wikipedia.org -p /w -a elephant
 ```
+![screenshot](http://imgur.com/mBalZZp "elephant")
+
 ## Command Line
 command | description | example | required
 --- | --- | --- | ---
--w --wiki `<url>`| wiki URL | en.wikipedia.org | yes
+-w --wiki `<url>`| wiki url | en.wikipedia.org | yes
 -p --path `<path>`| wiki path | /w | depends on wiki
 -a --article `<article_name>`| article name to read | elephant | no, will load Main_page by default
 -d --dump | dump to console | NA | no
@@ -39,10 +41,10 @@ w | highlight and scroll to previous header (from current link)
 * Ubuntu
 
 ## TODO
-* It's really raw right now and needs a lot of refactoring (don't judge, please!).
-* Needs some unit testing
-* Add wiki alias file
-* Feel free to submit any issues
+* It's really raw right now and needs a lot of refactoring (don't judge ;) )
+* Needs some unit testing and CI
+* Add wiki alias file, should it default to english wikipedia?
+* Feel free to submit any issues/ideas
 
 
 
