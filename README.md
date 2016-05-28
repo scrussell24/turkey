@@ -29,8 +29,8 @@ spacebar, C-s | focus search bar
 C-b | focus article box
 left arrow | back, hit enter when you find the article you would like to reload
 right arrow | forward, hit enter when you find the article you would like to reload
-d | hightlight and scroll to next link and hit enter to load
-a | hightlight and scroll to previous link and hit enter to load
+d | highlight and scroll to next link and hit enter to load
+a | highlight and scroll to previous link and hit enter to load
 s | highlight and scroll to next header (from current link)
 w | highlight and scroll to previous header (from current link)
 
