@@ -1,6 +1,6 @@
 { 
   "name": "turkey",
-  "version": "1.0.0_beta",
+  "version": "0.0.1",
   "description": "A terminal application for reading wikimedia data",
   "author": "Scott Russell",
   "email": "scrussell24@gmail.com",
