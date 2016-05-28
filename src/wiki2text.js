@@ -16,7 +16,7 @@ module.exports = {
             }
             Parsoid.parse(data, { document: true }).then(function(res) {
                 callback(html2text.fromString(res.out.outerHTML, {
-                wordwrap: 100
+                    wordwrap: 100
                 }), article);
             }).done();
         });

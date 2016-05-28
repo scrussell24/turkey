@@ -1,0 +1,8 @@
+Some example wikis I like. Note: if no path is given you may omit it.
+
+English Wikipedia - url=e"n.wikipedia.org" path="/w" 
+A Wiki of Ice and Fire - url="awoiaf.westeros.org"
+Wookiepedia - url="starwars.wikia.com"
+Arch Linux wiki - url="wiki.archlinux.org" (No Main_page article)
+
+Please submit more
