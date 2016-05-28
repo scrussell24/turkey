@@ -2,11 +2,9 @@
 Turkey is currently in beta. It's an terminal application 
 for browsing wikimedia data. Feel free to submit a pull request.
 ## Installation
-TODO: add to npm
+
 ```
-git clone
-npm install
-npm link
+npm install -g turkey
 ```
 ## Usage
 ```
