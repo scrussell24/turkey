@@ -1,0 +1,22 @@
+{ 
+  "name": "turkey",
+  "version": "1.0.0_beta",
+  "description": "A terminal application for reading wikimedia data",
+  "author": "Scott Russell",
+  "email": "scrussell24@gmail.com",
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "tky": "src/index.js"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "get-line-from-pos": "^1.0.0",
+    "html-to-text": "^2.1.0",
+    "lodash": "^4.11.1",
+    "nodemw": "^0.9.0",
+    "parsoid": "^0.4.0"
+  }
+}
