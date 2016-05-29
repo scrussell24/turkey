@@ -1,6 +1,6 @@
 { 
   "name": "turkey",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A terminal application for reading Mediawiki websites",
   "author": "Scott Russell",
   "email": "scrussell24@gmail.com",
@@ -8,6 +8,10 @@
   "preferGlobal": true,
   "bin": {
     "tky": "src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scrussell24/turkey"
   },
   "dependencies": {
     "blessed": "^0.1.81",

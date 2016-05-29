@@ -1,7 +1,8 @@
-# Terminal Wiki Browser
+# Turkey - Terminal Wiki Browser
 Turkey is a terminal application for browsing Mediawiki websites, such as wikipedia.org. See
 example_wikis.txt for some example wikis to browse.
 ## Installation
+node.js is required
 ```
 npm install -g turkey
 ```
@@ -15,8 +16,8 @@ tky -w en.wikipedia.org -p /w -a elephant
 ```
 ![screenshot](http://i.imgur.com/mBalZZp.png "elephant")
 
-## Command Line
-command | description | example | required
+## Command Line - tky
+arg | description | example | required
 --- | --- | --- | ---
 -w --wiki `<url>`| wiki url | en.wikipedia.org | yes
 -p --path `<path>`| wiki path | /w | depends on wiki

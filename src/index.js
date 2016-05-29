@@ -14,7 +14,7 @@
      LINK_REGEX = /\[\.\/[\w\d\s\_\'\-\:\.\/\\\(\)\#\%]+\]/gmi;
     
      commander
-      .version('0.0.4')
+      .version('0.0.5')
       .option('-w, --wiki <url>', 'Wiki url or alias', '')
       .option('-p, --path [path]', 'API Path', '')
       .option('-d, --dump', 'Dump to console')
