@@ -6,7 +6,7 @@
      chalk = require('chalk'),
      _ = require('lodash'),
      getLineFromPos = require('get-line-from-pos'),
-     wiki2text = require('./wiki2text');
+     Wiki2Text = require('./wiki2text.js');
 
 //Some common regexes     
  var HEADER_REGEX = /(?:^)[A-Z\d\s\'\_\.\n]{4,}(?:$)/gm,
@@ -30,10 +30,11 @@
     } 
     
     //init wiki url
-    wiki2text.setWiki(commander.wiki, commander.path);
+    //wiki2text.setWiki(commander.wiki, commander.path);
+    var w2t = new Wiki2Text(commander.wiki, commander.path);
     
     if(commander.dump){
-          wiki2text.convert(commander.article).then(function(text){
+          w2t.convert(commander.article).then(function(text){
              //headers
             text = text.replace(HEADER_REGEX, function(match){
               return '\n' + chalk.green(match) + '\n';
@@ -115,7 +116,7 @@
         box.focus();
         screen.render();
         try{
-          wiki2text.convert(article).then(function(text){
+          w2t.convert(article).then(function(text){
             
             //reinit stuff
               links = [];
