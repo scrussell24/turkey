@@ -33,7 +33,7 @@
     wiki2text.setWiki(commander.wiki, commander.path);
     
     if(commander.dump){
-          var callback = function(text, query){
+          wiki2text.convert(commander.article).then(function(text){
              //headers
             text = text.replace(HEADER_REGEX, function(match){
               return '\n' + chalk.green(match) + '\n';
@@ -52,8 +52,9 @@
                 return chalk.cyan(match);
               });
             console.log(text);  
-          }
-          wiki2text.convert(commander.article, callback);  
+          }, function(err){
+            console.log(err);
+          });
     } else {
       
       var screen = blessed.screen({
@@ -109,12 +110,12 @@
           currentPageIndex = pages.length - 1;
         }
         
-        var query = input.value.replace('\n','').replace(/\s/, '_').trim();
+        var article = input.value.replace('\n','').replace(/\s/, '_').trim();
         input.value = 'retrieving article...';
         box.focus();
         screen.render();
         try{
-          wiki2text.convert(query, function(text, query){
+          wiki2text.convert(article).then(function(text){
             
             //reinit stuff
               links = [];
@@ -141,9 +142,9 @@
                 links.push(match);
                 return chalk.cyan(match);
               });
-              
+             
               content = text;
-              input.value = query;
+              input.value = article;
               inputDisabled = false;
               screen.rerenderContent(content);
           });

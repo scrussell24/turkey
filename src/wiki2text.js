@@ -4,21 +4,23 @@ var bot = require('nodemw'),
     client;
     
 module.exports = {
-    convert : function(article, callback){
-        if(!client){
-            throw error('Client not initialized. see setWiki.');
-        }
-            
-        client.getArticle(article, function(err, data) {
-            if (err) {
-                console.error(err);
-                return;
+    convert : function(article){
+        
+        return new Promise(function(resolve,reject){
+            if(!client){
+                throw error('Client not initialized. see setWiki.');
             }
-            Parsoid.parse(data, { document: true }).then(function(res) {
-                callback(html2text.fromString(res.out.outerHTML, {
-                    wordwrap: 100
-                }), article);
-            }).done();
+            
+            client.getArticle(article, function(err, data) {
+                if (err) {
+                    reject(Error(err));
+                }
+                Parsoid.parse(data, { document: true }).then(function(res) {
+                    resolve(html2text.fromString(res.out.outerHTML, {
+                        wordwrap: 100
+                    }));
+                }).done();
+            });
         });
     },
     setWiki: function(url, path){
