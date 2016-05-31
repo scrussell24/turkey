@@ -1,3 +1,10 @@
 language: node_js
 node_js:
   - "5"
+ 
+ # TODO
+ # travis runs npm test by default
+ # npm version bump
+ # push version bump to github?
+ # run npm publish using secret npm creds
+ 

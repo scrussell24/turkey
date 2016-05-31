@@ -6,7 +6,8 @@
      chalk = require('chalk'),
      _ = require('lodash'),
      getLineFromPos = require('get-line-from-pos'),
-     Wiki2Text = require('./Wiki2Text.js');
+     Wiki2Text = require('./Wiki2Text.js'),
+     pjson = require('../package.json');
 
 //Some common regexes     
  var HEADER_REGEX = /(?:^)[A-Z\d\s\'\_\.\n]{4,}(?:$)/gm,
@@ -14,7 +15,7 @@
      LINK_REGEX = /\[\.\/[\w\d\s\_\'\-\:\.\/\\\(\)\#\%]+\]/gmi;
     
      commander
-      .version('0.0.5')
+      .version(pjson.version)
       .option('-w, --wiki [url]', 'Wiki url or alias', '')
       .option('-p, --path [path]', 'API Path', '')
       .option('-d, --dump', 'Dump to console')

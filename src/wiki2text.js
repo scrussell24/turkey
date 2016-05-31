@@ -14,8 +14,8 @@ var Wiki2Text = function(url, path, wordWrap) {
    this.wordWrap = wordWrap ? wordWrap : 100
   
    this.client =  new MediaWikiClient({
-           server: url ? url : 'en.wikipedia.org',
-           path: path ? path : '/w',
+           server: url || path ? url : 'en.wikipedia.org',
+           path: url || path ? path : '/w',
            debug: false
    });
 };
