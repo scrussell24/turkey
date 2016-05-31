@@ -6,7 +6,7 @@
      chalk = require('chalk'),
      _ = require('lodash'),
      getLineFromPos = require('get-line-from-pos'),
-     Wiki2Text = require('./wiki2text.js');
+     Wiki2Text = require('./Wiki2Text.js');
 
 //Some common regexes     
  var HEADER_REGEX = /(?:^)[A-Z\d\s\'\_\.\n]{4,}(?:$)/gm,
@@ -15,7 +15,7 @@
     
      commander
       .version('0.0.5')
-      .option('-w, --wiki <url>', 'Wiki url or alias', '')
+      .option('-w, --wiki [url]', 'Wiki url or alias', '')
       .option('-p, --path [path]', 'API Path', '')
       .option('-d, --dump', 'Dump to console')
       //.option('-f, --format [text]', 'Text format (wikitext,html,text)', 'text')
@@ -24,14 +24,7 @@
       //.option('-v', 'View wiki alias\'')
       .parse(process.argv);
 
-    if(!commander.wiki){
-      console.error('-w --wiki <url> is a required argument\ntype --help for more info');
-      process.exit(1);
-    } 
-    
-    //init wiki url
-    //wiki2text.setWiki(commander.wiki, commander.path);
-    var w2t = new Wiki2Text(commander.wiki, commander.path);
+    var w2t = new Wiki2Text(commander.wiki, commander.path, 100);
     
     if(commander.dump){
           w2t.convert(commander.article).then(function(text){
@@ -46,10 +39,7 @@
             });
 
             //links
-            var count = 0,
               text = text.replace(LINK_REGEX,function(match){
-                match = match.substring(0,3) + count + ' ' + match.substring(3);
-                count++;
                 return chalk.cyan(match);
               });
             console.log(text);  
