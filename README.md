@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/scrussell24/turkey.png)](https://travis-ci.org/scrussell24/turkey.png)
 # Turkey - Terminal Wiki Browser
 Turkey is a terminal application for browsing Mediawiki websites, such as wikipedia.org. See
 example_wikis.txt for some example wikis to browse.
