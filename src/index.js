@@ -1,18 +1,18 @@
 #! /usr/bin/env node
 
- var blessed = require('blessed'),
-     //contrib = require('blessed-contrib'),
-     commander = require('commander'),
-     chalk = require('chalk'),
-     _ = require('lodash'),
-     getLineFromPos = require('get-line-from-pos'),
-     Wiki2Text = require('./Wiki2Text.js'),
-     pjson = require('../package.json');
+ var blessed = require('blessed');
+ //var contrib = require('blessed-contrib');
+ var commander = require('commander');
+ var chalk = require('chalk');
+ var _ = require('lodash');
+ var getLineFromPos = require('get-line-from-pos');
+ var Wiki2Text = require('./Wiki2Text.js');
+ var pjson = require('../package.json');
 
 //Some common regexes     
- var HEADER_REGEX = /(?:^)[A-Z\d\s\'\_\.\n]{4,}(?:$)/gm,
-     LIST_REGEX = /\s\s\*/gmi,
-     LINK_REGEX = /\[\.\/[\w\d\s\_\'\-\:\.\/\\\(\)\#\%]+\]/gmi;
+ var HEADER_REGEX = /(?:^)[A-Z\d\s\'\_\.\n]{4,}(?:$)/gm;
+ var LIST_REGEX = /\s\s\*/gmi;
+ var LINK_REGEX = /\[\.\/[\w\d\s\_\'\-\:\.\/\\\(\)\#\%]+\]/gmi;
     
      commander
       .version(pjson.version)
@@ -50,17 +50,17 @@
     } else {
       
       var screen = blessed.screen({
-      smartCSR: true,
-      dockBorders: true
-      }),
-      inputDisabled = false,
-      content = '',       
-      headers = [],  
-      links = [],  
-      currentLinkIndex = -1,
-      currentHeaderIndex = -1,
-      pages = [],
-      currentPageIndex = 0;
+          smartCSR: true,
+        dockBorders: true
+      });
+      var inputDisabled = false;
+      var content = '';     
+      var headers = [];
+      var links = [];
+      var currentLinkIndex = -1;
+      var currentHeaderIndex = -1;
+      var pages = [];
+      var currentPageIndex = 0;
       
       var form = blessed.form({
         parent: screen,
