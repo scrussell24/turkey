@@ -2,6 +2,7 @@
 # Turkey - Terminal Wiki Browser
 Turkey is a terminal application for browsing Mediawiki websites, such as wikipedia.org. See
 example.txt for some example wikis to browse.
+Windows is not supported at this time.
 ## Installation
 node.js is required
 ```
