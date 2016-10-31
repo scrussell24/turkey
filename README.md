@@ -60,11 +60,5 @@ w | highlight and scroll to previous header (from current link)
 * OSX
 * Ubuntu
 
-## TODO
-* It's really raw right now and needs a lot of refactoring (don't judge ;) )
-* Needs some unit testing and CI
-* Add wiki alias file, should it default to english wikipedia?
-* Feel free to submit any issues/ideas
-
 
 
