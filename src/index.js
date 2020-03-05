@@ -1,19 +1,18 @@
 #! /usr/bin/env node
 
  var blessed = require('blessed');
- //var contrib = require('blessed-contrib');
  var commander = require('commander');
  var chalk = require('chalk');
  var _ = require('lodash');
  var getLineFromPos = require('get-line-from-pos');
- var Wiki2Text = require('./Wiki2Text.js');
+ var Wiki2Text = require('./wiki2text.js');
  var pjson = require('../package.json');
 
-//Some common regexes     
+//Some common regexes
  var HEADER_REGEX = /(?:^)[A-Z\d\s\'\_\.\n]{4,}(?:$)/gm;
  var LIST_REGEX = /\s\s\*/gmi;
  var LINK_REGEX = /\[\.\/[\w\d\s\_\'\-\:\.\/\\\(\)\#\%]+\]/gmi;
-    
+
      commander
       .version(pjson.version)
       .option('-w, --wiki [url]', 'Wiki url or alias', '')
@@ -26,7 +25,7 @@
       .parse(process.argv);
 
     var w2t = new Wiki2Text(commander.wiki, commander.path, 100);
-    
+
     if(commander.dump){
           w2t.convert(commander.article).then(function(text){
              //headers
@@ -35,26 +34,25 @@
             });
 
             //list
-            text = text.replace(LIST_REGEX,function(match){
+            text = text.replace(LIST_REGEX, function(match){
               return chalk.magenta(match);
             });
 
             //links
-              text = text.replace(LINK_REGEX,function(match){
+              text = text.replace(LINK_REGEX, function(match){
                 return chalk.cyan(match);
               });
-            console.log(text);  
+            console.log(text);
           }, function(err){
             console.log(err);
           });
     } else {
-      
       var screen = blessed.screen({
           smartCSR: true,
         dockBorders: true
       });
       var inputDisabled = false;
-      var content = '';     
+      var content = '';
       var headers = [];
       var links = [];
       var currentLinkIndex = -1;
@@ -116,19 +114,19 @@
               currentHeaderIndex = -1;
               
               //headers
-              text = text.replace(HEADER_REGEX,function(match){
+              text = text.replace(HEADER_REGEX, function(match){
                 headers.push(match);
                 return '\n' + chalk.green(match) + '\n';
               });
 
               //list
-              text = text.replace(LIST_REGEX,function(match){
+              text = text.replace(LIST_REGEX, function(match){
                 return chalk.magenta(match);
               });
 
               //links
               var count = 0,
-              text = text.replace(LINK_REGEX,function(match){
+              text = text.replace(LINK_REGEX, function(match){
                 match = match.substring(0,3) + count + ' ' + match.substring(3);
                 count++;
                 links.push(match);
@@ -144,7 +142,6 @@
           inputDisabled = false;
           screen.rerenderContent('Error, please search again');
         }
-        
       });
 
       input.key(['enter'], function() {
@@ -155,14 +152,14 @@
 
       box.key(['enter'], function() {
         if(!inputDisabled && currentLinkIndex >= 0){
-            var query = links[currentLinkIndex].replace(/\[\.\/[0-9]+\s/,'');
+            var query = links[currentLinkIndex].replace(/\[\.\/[0-9]+\s/, '');
             input.value = query.substring(0, query.length - 1);
             input.focus();
             form.submit();
         }
       });
       
-      screen.key(['left'], function() {
+      screen.key(['up'], function() {
           if(currentPageIndex >= 1){
             currentPageIndex--;
             input.value = pages[currentPageIndex];
@@ -171,7 +168,7 @@
           }
       });
       
-      screen.key(['right'], function() {
+      screen.key(['down'], function() {
         if(currentPageIndex < pages.length-1){
               currentPageIndex++;
               input.value = pages[currentPageIndex];
@@ -200,12 +197,12 @@
           return;
         }
 
-        content = content.replace(links[currentLinkIndex],function(match){
+        content = content.replace(links[currentLinkIndex], function(match){
             return chalk.cyan.bgBlack(match);
         });
 
         currentLinkIndex++;
-        content = content.replace(links[currentLinkIndex],function(match){
+        content = content.replace(links[currentLinkIndex], function(match){
             return chalk.white.bgBlue(match);
         });
 
@@ -232,48 +229,49 @@
       });
 
       screen.key(['s'], function(ch, key) {
-        if(currentHeaderIndex === headers.length - 1){
-          return;
+        if(currentHeaderIndex >= headers.length - 1){
+            return;
         }
 
-        content = content.replace(headers[currentHeaderIndex],function(match){
+        content = content.replace(headers[currentHeaderIndex], function(match){
             return chalk.green.bgBlack(match);
         });
 
         currentHeaderIndex++;
-        content = content.replace(headers[currentHeaderIndex],function(match){
+        content = content.replace(headers[currentHeaderIndex], function(match){
             return chalk.black.bgYellow(match);
         });
 
-        content = content.replace(links[currentLinkIndex],function(match){
+        content = content.replace(links[currentLinkIndex], function(match){
             return chalk.cyan.bgBlack(match);
         });
         
         currentLinkIndex = -1;
-        while(content.indexOf(links[currentLinkIndex]) <= content.indexOf(headers[currentHeaderIndex])) {
-              currentLinkIndex++;
+        while(content.indexOf(links[currentLinkIndex]) <= content.indexOf(headers[currentHeaderIndex])){
+            currentLinkIndex++;
         }
         currentLinkIndex--;
+
         box.scrollTo(getLineFromPos(content, content.indexOf(headers[currentHeaderIndex])) + 10);
         screen.rerenderContent(content);
       });
 
       screen.key(['w'], function(ch, key) {
 
-        if(currentHeaderIndex === -1){
+        if(currentHeaderIndex <= -1){
           return;
         }
 
-        content = content.replace(headers[currentHeaderIndex],function(match){
+        content = content.replace(headers[currentHeaderIndex], function(match){
             return chalk.green.bgBlack(match);
         });
 
         currentHeaderIndex--;
-        content = content.replace(headers[currentHeaderIndex],function(match){
+        content = content.replace(headers[currentHeaderIndex], function(match){
             return chalk.black.bgYellow(match);
         });
 
-        content = content.replace(links[currentLinkIndex],function(match){
+        content = content.replace(links[currentLinkIndex], function(match){
             return chalk.cyan.bgBlack(match);
         });
 
@@ -302,5 +300,3 @@
       form.submit();
       screen.render();
     }
-
-    

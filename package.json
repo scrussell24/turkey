@@ -1,6 +1,6 @@
 {
   "name": "turkey",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A terminal application for reading Mediawiki websites",
   "author": "Scott Russell",
   "email": "scrussell24@gmail.com",
@@ -13,18 +13,19 @@
     "type": "git",
     "url": "https://github.com/scrussell24/turkey"
   },
-  "scripts" : {
-    "start" : "node src/index.js",	
-    "test" : "jasmine-node spec/"
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jasmine-node spec/"
   },
   "dependencies": {
     "blessed": "^0.1.81",
-    "chalk": "^1.1.3",
-    "commander": "^2.9.0",
+    "chalk": "^3.0.0",
+    "commander": "^4.1.1",
     "get-line-from-pos": "^1.0.0",
-    "html-to-text": "^2.1.0",
-    "lodash": "^4.11.1",
-    "nodemw": "^0.9.0",
-    "parsoid": "^0.4.0"
+    "html-to-text": "^5.1.1",
+    "lodash": "^4.17.15",
+    "node": "^13.9.0",
+    "nodemw": "^0.12.2",
+    "parsoid": "^0.6.0"
   }
 }

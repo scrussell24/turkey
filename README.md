@@ -49,8 +49,8 @@ shortcut | description
 esc, q, C-c | quit 
 spacebar, C-s | focus search bar
 C-b | focus article box
-left arrow | back, hit enter when you find the article you would like to reload
-right arrow | forward, hit enter when you find the article you would like to reload
+up arrow | back, hit enter when you find the article you would like to reload
+down arrow | forward, hit enter when you find the article you would like to reload
 d | highlight and scroll to next link and hit enter to load
 a | highlight and scroll to previous link and hit enter to load
 s | highlight and scroll to next header (from current link)
